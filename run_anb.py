@@ -7,6 +7,7 @@ USERDB = 'root'
 PASSDB = '1234'
 DB = 'anb'
 
+
 def main():
     con = pymysql.connect(host="localhost", user=USERDB, passwd=PASSDB, db=DB, charset='utf8',
                           init_command='SET NAMES UTF8', cursorclass=pymysql.cursors.DictCursor, autocommit=True)
@@ -18,7 +19,7 @@ def main():
     con.close()
     for r in res:
         subprocess.Popen(['java', '-jar', './parser/anb-1.0-jar-with-dependencies.jar', 'anb', r['id']])
-        time.sleep(15*60)
+        time.sleep(15 * 60)
 
 
 if __name__ == "__main__":
