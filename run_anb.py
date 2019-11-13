@@ -18,8 +18,11 @@ def main():
     cur.close()
     con.close()
     for r in res:
-        subprocess.Popen(['java', '-jar', './parser/anb-1.0-jar-with-dependencies.jar', 'anb', str(r['id'])])
-        time.sleep(15 * 60)
+        try:
+            subprocess.Popen(['java', '-jar', './parser/anb-1.0-jar-with-dependencies.jar', 'anb', str(r['id'])])
+            time.sleep(15 * 60)
+        except Exception as e:
+            print(e)
 
 
 if __name__ == "__main__":
